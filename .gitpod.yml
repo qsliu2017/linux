@@ -1,0 +1,10 @@
+tasks:
+  - before: |
+      sudo apt update
+      sudo apt install -y llvm-15-dev clang-15 lld-15 flex qemu-system-misc
+    init: |
+      make nommu_virt_defconfig
+      make -j`nproc`
+    env:
+      ARCH: riscv
+      LLVM: -15
